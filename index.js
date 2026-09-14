@@ -107,4 +107,6 @@ app.post('/update-cobj', async (req, res) => {
 });
 
 // * Localhost
-app.listen(3000, () => console.log('Listening on http://localhost:3000'));
+app.listen(3000, () => console.log('Listening on http://localhost:3000'));app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
