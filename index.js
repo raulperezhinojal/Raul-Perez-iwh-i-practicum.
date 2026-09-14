@@ -15,10 +15,18 @@ app.use(express.json());
 
 // * Please DO NOT INCLUDE the private app access token in your repo. Don't do this practicum in your normal account.
 const PRIVATE_APP_ACCESS = '';
+const HUBSPOT_HEADERS = {
+    Authorization: `Bearer ${process.env.PRIVATE_APP_ACCESS_TOKEN}`,
+    'Content-Type': 'application/json'
+};
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
+const OBJECT_TYPE = process.env.CUSTOM_OBJECT_ID;
 
 // * Code for Route 1 goes here
+// Ruta 1: GET / -> Mostrar tabla en la página principal
+app.get('/', async (req, res) => {
+    const url = `https://api.hubapi.com/crm/v3/objects/${OBJECT_TYPE}?properties=name,species,bio`;
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
