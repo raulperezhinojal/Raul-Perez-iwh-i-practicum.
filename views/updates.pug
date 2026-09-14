@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    h1= title
+    p
+      a(href="/") Return to the homepage
+
+    form(action="/update-cobj" method="POST")
+      div
+        label(for="name") Name:
+        br
+        input(type="text" id="name" name="name" required)
+      br
