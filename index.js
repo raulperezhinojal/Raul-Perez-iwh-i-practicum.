@@ -71,8 +71,17 @@ app.get('/update-cobj', (req, res) => {
         title: 'Update Custom Object Form | Integrating With HubSpot I Practicum'
     });
 });
+
+// Ruta 3: POST /update-cobj -> Crear registro y redirigir
+app.post('/update-cobj', async (req, res) => {
+    const { name, species, bio } = req.body;
+    const url = `https://api.hubapi.com/crm/v3/objects/${OBJECT_TYPE}`;
+
+    const newRecord = {
         properties: {
-            "favorite_book": req.body.newVal
+            name,
+            species,
+            bio
         }
     }
 
