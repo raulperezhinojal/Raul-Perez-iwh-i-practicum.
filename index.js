@@ -50,8 +50,15 @@ app.get('/contacts', async (req, res) => {
         const resp = await axios.get(contacts, { headers });
         const data = resp.data.results;
         res.render('contacts', { title: 'Contacts | HubSpot APIs', data });      
+        const response = await axios.get(url, { headers: HUBSPOT_HEADERS });
+        const data = response.data.results;
+        res.render('homepage', {
+            title: 'Custom Objects | Integrating With HubSpot I Practicum',
+            data
+        });
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching custom objects:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error loading custom objects.');
     }
 });
 
