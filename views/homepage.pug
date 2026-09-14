@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    h1 Custom Objects List
+    p
+      a(href="/update-cobj") Add to this table
+
+    table(border="1" cellpadding="8" cellspacing="0")
+      thead
+        tr
+          th Name
+          th Species
+          th Bio
+      tbody
+        if data && data.length
+          each item in data
+            tr
+              td= item.properties.name
+              td= item.properties.species
+              td= item.properties.bio
+        else
+          tr
+            td(colspan="3") No records found.
