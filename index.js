@@ -97,11 +97,14 @@ app.post('/update-cobj', async (req, res) => {
         res.redirect('back');
     } catch(err) {
         console.error(err);
+    try {
+        await axios.post(url, newRecord, { headers: HUBSPOT_HEADERS });
+        res.redirect('/');
+    } catch (error) {
+        console.error('Error creating custom object record:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error creating custom object.');
     }
-
 });
-*/
-
 
 // * Localhost
 app.listen(3000, () => console.log('Listening on http://localhost:3000'));
