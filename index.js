@@ -65,6 +65,12 @@ app.get('/contacts', async (req, res) => {
 * * App.post sample
 app.post('/update', async (req, res) => {
     const update = {
+// Ruta 2: GET /update-cobj -> Mostrar formulario
+app.get('/update-cobj', (req, res) => {
+    res.render('updates', {
+        title: 'Update Custom Object Form | Integrating With HubSpot I Practicum'
+    });
+});
         properties: {
             "favorite_book": req.body.newVal
         }
